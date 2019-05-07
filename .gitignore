@@ -1,0 +1,6 @@
+#ignore file
+ai
+*.a
+*.vscode
+*.o
+*.c~
