@@ -1,4 +1,9 @@
 #ignore file
+n4s
+n4s_buffer
+pipes.sh
+./n4s_package/*
+./n4s_package
 ai
 *.a
 *.vscode
