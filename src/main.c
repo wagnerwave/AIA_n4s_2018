@@ -1,15 +1,18 @@
 /*
-** EPITECH PROJECT, 2019
-** main
+** EPITECH PROJECT, 2018
+** n4s
 ** File description:
 ** n4s
 */
 
+#include "my.h"
+#include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include "my.h"
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <string.h>
 
 static void print_n_reset(char *str)
 {
@@ -17,33 +20,38 @@ static void print_n_reset(char *str)
     str = get_next_line(0);
 }
 
-static void algo(float midl, float midr)
+static void algo(float weel_rotate_left, float weel_rotate_right)
 {
-    float mid;
 
-    if (midl < midr)
-        mid = midl;
-    else
-        mid = midr;
-    if (mid >= 2000)
-        print_n_reset("CAR_FORWARF:1\n");
-    else
-        printf("CAR_FORWARD:%f\n" , 0.00420 * mid + -0.0241);
-}
+    float weel_rotate;
 
-static void go_to_middle(float mid)
-{
-    if (mid >= 1500)
-        print_n_reset("0.008");
+    if (weel_rotate_left < weel_rotate_right)
+        weel_rotate = weel_rotate_left;
+    else
+        weel_rotate = weel_rotate_right;
+    if (weel_rotate >= 2000)
+        print_n_reset("CAR_FORWARD:1\n");
     else {
-        my_put_nbr_float(-0.00000000014868237619 *
-mid * mid * mid + 0.0000006918567543568 * mid
-* mid - 0.001076432050432 * mid + 0.609633999593699);
+        my_putstr("CAR_FORWARD:");
+        my_put_nbr_float(0.000410 * weel_rotate + -0.0241);
         print_n_reset("\n");
     }
 }
 
-static void middle(float left, float right, float midl, float midr)
+static void weel_dir(float weel_rotate)
+{
+    if (weel_rotate >= 1500)
+        print_n_reset("0.008\n");
+    else {
+        my_put_nbr_float(-0.00000000015 *
+                         weel_rotate * weel_rotate * weel_rotate + 0.0000007
+                         * weel_rotate * weel_rotate - 0.001 * weel_rotate +
+                         0.6);
+        print_n_reset("\n");
+    }
+}
+static void rotate
+(float left, float right, float weel_rotate_left, float weel_rotate_right)
 {
     float coef = left - right;
 
@@ -51,13 +59,13 @@ static void middle(float left, float right, float midl, float midr)
         my_putstr("WHEELS_DIR:-");
     else
         my_putstr("WHEELS_DIR:");
-    if (midl < midr)
-        go_to_middle(midl);
+    if (weel_rotate_left < weel_rotate_right)
+        weel_dir(weel_rotate_left);
     else
-        go_to_middle(midr);
+        weel_dir(weel_rotate_right);
 }
 
-static int need_for_steak(void)
+int main(void)
 {
     char *str = "";
     char **tab = NULL;
@@ -66,21 +74,17 @@ static int need_for_steak(void)
     while ((str = get_next_line(0)) == NULL);
     my_putstr("CAR_FORWARD:1\n");
     str = get_next_line(0);
+    (str == NULL) ? exit(84) : 0;
     while (1) {
-        my_putstr("GET_INFO_LINDAR");
-        str = strtowordarray(str, ":");
+        my_putstr("GET_INFO_LIDAR\n");
+        str = get_next_line(0);
+        tab = strtowordarray(str, ':');
         algo(atof(tab[17]), atof(tab[21]));
-        middle(atof(tab[3]), atof(tab[34]), atof(tab[17]), atof(tab[21]));
+        rotate(atof(tab[3]), atof(tab[34]), atof(tab[17]), atof(tab[21]));
         if (strcmp(tab[35], "Track Cleared") == 0) {
             print_n_reset("stop_simulation\n");
-            return 0;
+            return (0);
         }
-        return 0;
     }
-}
-
-int main(int ac, char **av)
-{
-    need_for_steak();
-    return 0;
+    return (0);
 }
