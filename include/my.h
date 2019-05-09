@@ -12,6 +12,8 @@
 #define READ_SIZE 4096
 
 void my_putchar(char c);
+void my_putstr(char const *str);
+char **strtowordarray(char *str, char delim);
 int my_put_nbr(long nb);
 int my_put_nbr_float(double nb);
 char *get_next_line(int fd);
