@@ -7,6 +7,11 @@
 
 #pragma once
 
-#define READ_SIZE 1
+#include <stdio.h>
 
+#define READ_SIZE 4096
+
+void my_putchar(char c);
+int my_put_nbr(long nb);
+int my_put_nbr_float(double nb);
 char *get_next_line(int fd);
