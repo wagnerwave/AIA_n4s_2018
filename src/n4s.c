@@ -1,5 +1,5 @@
 /*
-** EPITECH PROJECT, 2019
+** EPITECH PROJECT, 2018
 ** n4s.c
 ** File description:
 ** algo etc
@@ -38,8 +38,8 @@ static void weel_dir(float weel_rotate)
         print_n_reset("0.008\n");
     else {
         my_put_nbr_float(-0.00000000015 *
-weel_rotate * weel_rotate * weel_rotate + 0.0000007
-* weel_rotate * weel_rotate - 0.001 * weel_rotate + 0.6);
+        weel_rotate * weel_rotate * weel_rotate + 0.0000007
+        * weel_rotate * weel_rotate - 0.001 * weel_rotate + 0.6);
         print_n_reset("\n");
     }
 }
