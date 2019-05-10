@@ -11,7 +11,8 @@ D_INC	=	./include/
 
 NAME	=	./ai
 
-SRC	=	$(D_SRC)main.c
+SRC	=	$(D_SRC)n4s.c \
+		$(D_SRC)main.c
 
 OBJ	=	$(SRC:.c=.o)
 

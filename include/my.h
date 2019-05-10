@@ -7,10 +7,9 @@
 
 #pragma once
 
-#include <stdio.h>
-
 #define READ_SIZE 4096
 
+int need_for_steak(char *str, char **tab);
 void my_putchar(char c);
 void my_putstr(char const *str);
 char **strtowordarray(char *str, char delim);
